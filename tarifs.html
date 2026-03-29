@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarifs & Abonnements | Les Studios</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .price-card { background: var(--bg-surface); padding: 2.5rem; border-radius: 12px; border-top: 4px solid var(--text-muted); }
+    .price-card.premium { border-top-color: var(--primary); transform: translateY(-10px); }
+    .price { font-size: 3rem; font-weight: 800; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <!-- Insert Standard Navbar Here -->
+
+  <section class="container" style="padding-top: 8rem;">
+    <h1 class="section-title">Nos Tarifs</h1>
+    
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Plein Tarif</h3>
+        <p style="color: var(--text-muted);">Billet à l'unité</p>
+        <div class="price">7.50€</div>
+        <button class="btn btn-outline" style="width:100%">Acheter</button>
+      </div>
+
+      <div class="price-card premium">
+        <h3>Tarif Réduit</h3>
+        <p style="color: var(--text-muted);">Étudiants, chômeurs, -18 ans</p>
+        <div class="price">5.50€</div>
+        <p style="font-size: 0.8rem; color: #888; margin-bottom: 1rem;">*Sur présentation d'un justificatif</p>
+        <button class="btn btn-primary" style="width:100%">Acheter</button>
+      </div>
+
+      <div class="price-card">
+        <h3>Carte Abonnement</h3>
+        <p style="color: var(--text-muted);">10 places, valable 1 an</p>
+        <div class="price">55.00€</div>
+        <button class="btn btn-outline" style="width:100%">Souscrire</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insert Standard Footer Here -->
+  <script src="js/main.js"></script>
+</body>
+</html>
