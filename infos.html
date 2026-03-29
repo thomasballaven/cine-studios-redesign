@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infos Pratiques | Les Studios</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .info-box { background: var(--bg-surface); padding: 2rem; border-radius: 8px; margin-bottom: 2rem; }
+    @media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <!-- Insert Standard Navbar Here -->
+
+  <section class="container" style="padding-top: 8rem;">
+    <h1 class="section-title">Infos Pratiques</h1>
+    
+    <div class="info-grid">
+      <div>
+        <div class="info-box">
+          <h3 style="color: var(--primary); margin-bottom: 1rem;">Nous trouver</h3>
+          <p><strong>Cinéma Les Studios</strong><br>2 Rue des Ursulines<br>29200 Brest</p>
+          <br>
+          <p><strong>Accès:</strong><br>Tram: Ligne A (Arrêt Château)<br>Bus: Ligne 2, 5</p>
+        </div>
+        
+        <div class="info-box">
+          <h3 style="color: var(--primary); margin-bottom: 1rem;">Accessibilité</h3>
+          <p>L'ensemble de nos salles est accessible aux personnes à mobilité réduite.<br>Boucle magnétique disponible en Salle 1 et 2.</p>
+        </div>
+      </div>
+
+      <div>
+        <!-- Map Placeholder -->
+        <div style="width: 100%; height: 400px; background: #333; border-radius: 8px; display:flex; align-items:center; justify-content:center;">
+          <span style="color: #888;">[ Intégration Google Maps ]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insert Standard Footer Here -->
+  <script src="js/main.js"></script>
+</body>
+</html>
