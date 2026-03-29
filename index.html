@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Studios | Cinéma Indépendant</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html" class="logo">LES <span>STUDIOS</span></a>
+    <div class="menu-toggle">☰</div>
+    <div class="nav-links">
+      <a href="films.html">Films</a>
+      <a href="seances.html">Séances</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="infos.html">Infos Pratiques</a>
+      <a href="about.html">Le Cinéma</a>
+      <a href="seances.html" class="btn btn-primary hide-mobile">Réserver</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-meta"><span>DRAME</span> <span>•</span> <span>2H14</span></div>
+      <h1>ANATOMIE D'UNE CHUTE</h1>
+      <p style="margin-bottom: 2rem; font-size: 1.1rem; color: var(--text-muted);">
+        Palme d'Or 2023. Sandra, Samuel et leur fils malvoyant de 11 ans, Daniel, vivent depuis un an loin de tout, à la montagne...
+      </p>
+      <div class="hero-buttons">
+        <a href="seances.html" class="btn btn-primary">Voir les séances</a>
+        <a href="film.html" class="btn btn-outline">Détails du film</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Now Showing Grid -->
+  <section class="container" id="affiche">
+    <h2 class="section-title">À l'affiche cette semaine</h2>
+    <div class="movie-grid">
+      <!-- Card 1 -->
+      <div class="movie-card" onclick="window.location.href='film.html'">
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=800&auto=format&fit=crop" alt="Poster">
+        <div class="movie-card-overlay">
+          <h3>Dune: Part Two</h3>
+          <p style="color:var(--primary); margin-top:0.5rem">Aujourd'hui: 14h00, 20h30</p>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="movie-card" onclick="window.location.href='film.html'">
+        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800&auto=format&fit=crop" alt="Poster">
+        <div class="movie-card-overlay">
+          <h3>Pauvres Créatures</h3>
+          <p style="color:var(--primary); margin-top:0.5rem">Aujourd'hui: 18h15, 21h00</p>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="movie-card" onclick="window.location.href='film.html'">
+        <img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=800&auto=format&fit=crop" alt="Poster">
+        <div class="movie-card-overlay">
+          <h3>Le Garçon et le Héron</h3>
+          <p style="color:var(--primary); margin-top:0.5rem">Aujourd'hui: 16h00</p>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="movie-card" onclick="window.location.href='film.html'">
+        <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=800&auto=format&fit=crop" alt="Poster">
+        <div class="movie-card-overlay">
+          <h3>Past Lives</h3>
+          <p style="color:var(--primary); margin-top:0.5rem">Aujourd'hui: 19h30</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reusable Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h3 class="logo">LES <span>STUDIOS</span></h3>
+        <p style="color: var(--text-muted); margin-top: 1rem;">Votre cinéma d'art et d'essai indépendant. Une expérience cinématographique unique.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul style="list-style: none; color: var(--text-muted); margin-top: 1rem; line-height: 2;">
+          <li><a href="films.html">Tous les films</a></li>
+          <li><a href="seances.html">Horaires</a></li>
+          <li><a href="tarifs.html">Tarifs & Abonnements</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p style="color: var(--text-muted); margin-top: 1rem;">2 Rue des Ursulines<br>29200 Brest<br>02 98 46 25 58</p>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #333; padding-top: 2rem; text-align: center; color: var(--text-muted);">
+      © 2024 Les Studios. Tous droits réservés.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
