@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mes billets | Les Studios</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
 
+  <!-- MENU -->
+  <nav class="navbar">
+    <a href="index.html">Accueil</a>
+    <a href="films.html">Films</a>
+    <a href="seances.html">Séances</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="infos.html">Infos</a>
+    <a href="booking.html">Mes billets 🎟️</a>
+  </nav>
+
+  <!-- RETOUR -->
+  <button onclick="history.back()" class="back-btn">
+    ← Retour
+  </button>
+
+  <!-- PAGE -->
+  <main class="booking-page">
+    <h1>Mes billets</h1>
+    <p>Retrouvez ici toutes vos séances sélectionnées.</p>
+
+    <ul id="ticket-list"></ul>
+
+    <div class="booking-actions">
+      <a href="seances.html" class="btn">➕ Ajouter une séance</a>
+      <button onclick="clearTickets()" class="btn danger">
+        🗑️ Vider mes billets
+      </button>
+    </div>
+  </main>
+
+  <script src="js/booking.js"></script>
+</body>
+</html>
