@@ -145,4 +145,90 @@ footer { background: var(--bg-surface); padding: 4rem 5% 2rem; margin-top: 4rem;
   .schedule-row { flex-direction: column; align-items: flex-start; }
   .mobile-sticky-cta { display: block; }
   .hide-mobile { display: none; }
+  /* Bouton Retour */
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: var(--transition);
+}
+.btn-back:hover {
+  color: var(--primary);
+  transform: translateX(-5px);
+}
+
+/* Panneau de réservation dynamique */
+.booking-panel {
+  background: var(--bg-surface-light);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  display: none; /* Caché par défaut */
+  animation: fadeIn 0.3s ease;
+  border: 1px solid #444;
+}
+.booking-panel.active {
+  display: block; /* Affiché quand on clique sur une heure */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ticket-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #444;
+}
+.ticket-row:last-of-type { border-bottom: none; }
+
+.ticket-counter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.counter-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--text-muted);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+.counter-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.qty {
+  font-weight: 600;
+  width: 20px;
+  text-align: center;
+}
+
+.booking-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+}
 }
