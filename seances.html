@@ -54,7 +54,61 @@
       <div class="date-btn">Jeudi 15</div>
       <div class="date-btn">Vendredi 16</div>
     </div>
+<!-- Dans seances.html, pour CHAQUE .schedule-row, structurez-le comme ceci : -->
+<section class="container" style="padding-top: 8rem;">
+  
+  <!-- BOUTON RETOUR -->
+  <button onclick="history.back()" class="btn-back">← Retour à l'accueil</button>
+  
+  <h1 class="section-title">Séances du moment</h1>
+  
+  <div class="schedule-row">
+    <img src="..." class="schedule-poster" alt="Dune">
+    
+    <div class="schedule-info">
+      <h3>Dune: Part Two</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Salle 1 • Sci-Fi • 2h46</p>
+      
+      <div class="times-grid">
+        <div class="time-pill">14:00 (VOSTFR)</div>
+        <div class="time-pill">17:15 (VF)</div>
+      </div>
 
+      <!-- PANNEAU DE RESERVATION (Intégré dans schedule-info) -->
+      <div class="booking-panel">
+        <h4 style="color: var(--primary); margin-bottom: 1rem;">
+          Séance de <span class="selected-time-display">...</span>
+        </h4>
+        
+        <div class="ticket-row">
+          <div>Plein Tarif <span style="color:#aaa;">(7.50€)</span></div>
+          <div class="ticket-counter">
+            <button class="counter-btn minus" data-price="7.50">-</button>
+            <span class="qty">0</span>
+            <button class="counter-btn plus" data-price="7.50">+</button>
+          </div>
+        </div>
+        
+        <div class="ticket-row">
+          <div>Tarif Réduit <span style="color:#aaa;">(5.50€)</span></div>
+          <div class="ticket-counter">
+            <button class="counter-btn minus" data-price="5.50">-</button>
+            <span class="qty">0</span>
+            <button class="counter-btn plus" data-price="5.50">+</button>
+          </div>
+        </div>
+
+        <div class="booking-total">
+          <span>Total</span>
+          <span class="total-price">0.00€</span>
+        </div>
+        
+        <button class="btn btn-outline btn-pay" style="width: 100%; margin-top: 1.5rem;" disabled>Payer</button>
+      </div>
+
+    </div>
+  </div>
+</section>
     <!-- Timetable UI -->
     <div class="schedule-row">
       <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=200&auto=format&fit=crop" class="schedule-poster" alt="Dune">
