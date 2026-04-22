@@ -36,7 +36,64 @@
       <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 800px; margin-bottom: 2rem;">
         Paul Atréides s'unit à Chani et aux Fremen pour mener la révolte contre ceux qui ont anéanti sa famille. Hanté par de sombres prémonitions, il se trouve confronté au plus grand des dilemmes : choisir entre l'amour de sa vie et le destin de l'univers.
       </p>
+      <!-- Dans film.html, remplacer la div .film-detail-container par : -->
+<div class="film-detail-container">
+  
+  <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0..." alt="Poster" class="film-poster-main">
+  
+  <div style="padding-top: 2rem; width: 100%;">
+    
+    <!-- BOUTON RETOUR -->
+    <button onclick="history.back()" class="btn-back">← Retour</button>
+
+    <div class="hero-meta"><span>SCIENCE-FICTION</span> <span>•</span> <span>2H46</span></div>
+    <h1 style="font-size: 3rem; margin-bottom: 1rem;">DUNE: PART TWO</h1>
+    
+    <h3>Séances d'aujourd'hui</h3>
+    
+    <!-- Grille des heures -->
+    <div class="times-grid" style="margin-bottom: 1rem;">
+      <div class="time-pill">14:00 (VOSTFR)</div>
+      <div class="time-pill">17:15 (VF)</div>
+      <div class="time-pill">20:30 (VOSTFR)</div>
+    </div>
+
+    <!-- LE SYSTEME DE RESERVATION (Caché par défaut, s'ouvre sous l'heure choisie) -->
+    <div class="booking-panel">
+      <h4 style="color: var(--primary); margin-bottom: 1rem;">
+        Réservation pour la séance de <span class="selected-time-display">...</span>
+      </h4>
       
+      <div class="ticket-row">
+        <div>Plein Tarif <span style="color:var(--text-muted); font-size: 0.9rem;">(7.50€)</span></div>
+        <div class="ticket-counter">
+          <button class="counter-btn minus" data-price="7.50">-</button>
+          <span class="qty">0</span>
+          <button class="counter-btn plus" data-price="7.50">+</button>
+        </div>
+      </div>
+      
+      <div class="ticket-row">
+        <div>Tarif Réduit <span style="color:var(--text-muted); font-size: 0.9rem;">(5.50€)</span></div>
+        <div class="ticket-counter">
+          <button class="counter-btn minus" data-price="5.50">-</button>
+          <span class="qty">0</span>
+          <button class="counter-btn plus" data-price="5.50">+</button>
+        </div>
+      </div>
+
+      <div class="booking-total">
+        <span>Total</span>
+        <span class="total-price">0.00€</span>
+      </div>
+      
+      <button class="btn btn-outline btn-pay" style="width: 100%; margin-top: 1.5rem;" disabled>
+        Accéder au paiement
+      </button>
+    </div>
+    
+  </div>
+
       <h3>Séances d'aujourd'hui</h3>
       <div class="times-grid" style="margin-bottom: 2rem;">
         <div class="time-pill">14:00 (VOSTFR)</div>
