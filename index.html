@@ -3,102 +3,165 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Les Studios | Cinéma Indépendant</title>
+  <title>Films | Les Studios</title>
+  <!-- Typographie Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav>
-    <a href="index.html" class="logo">LES <span>STUDIOS</span></a>
-    <div class="menu-toggle">☰</div>
-    <div class="nav-links">
-      <a href="films.html">Films</a>
-      <a href="seances.html">Séances</a>
-      <a href="tarifs.html">Tarifs</a>
-      <a href="infos.html">Infos Pratiques</a>
-      <a href="about.html">Le Cinéma</a>
-      <a href="seances.html" class="btn btn-primary hide-mobile">Réserver</a>
+
+  <!-- Bouton Retour Flottant -->
+  <button class="btn-back" onclick="history.back()" title="Retour">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    <span>Retour</span>
+  </button>
+
+  <!-- Navbar Fixe -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-left">
+      <a href="#" class="logo">LES <span>STUDIOS</span></a>
+      <ul class="nav-links desktop-only">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#" class="active">Films</a></li>
+        <li><a href="#">Séries</a></li>
+        <li><a href="#">Ma Liste</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></button>
+      <div class="user-avatar"></div>
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero Section Immersive -->
   <header class="hero">
+    <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=2000&auto=format&fit=crop');"></div>
+    <div class="hero-vignette"></div>
     <div class="hero-content">
-      <div class="hero-meta"><span>DRAME</span> <span>•</span> <span>2H14</span></div>
-      <h1>ANATOMIE D'UNE CHUTE</h1>
-      <p style="margin-bottom: 2rem; font-size: 1.1rem; color: var(--text-muted);">
-        Palme d'Or 2023. Sandra, Samuel et leur fils malvoyant de 11 ans, Daniel, vivent depuis un an loin de tout, à la montagne...
+      <h1 class="hero-title">OPPENHEIMER</h1>
+      <div class="hero-meta">
+        <span class="match">Recommandé à 98%</span>
+        <span class="year">2023</span>
+        <span class="rating">12+</span>
+        <span class="duration">3h 00m</span>
+        <span class="quality">4K HDR</span>
+      </div>
+      <p class="hero-synopsis">
+        L'histoire captivante du physicien J. Robert Oppenheimer et de son rôle dans le développement de la bombe atomique lors du projet Manhattan.
       </p>
-      <div class="hero-buttons">
-        <a href="seances.html" class="btn btn-primary">Voir les séances</a>
-        <a href="film.html" class="btn btn-outline">Détails du film</a>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="openBooking('Oppenheimer', '14:00', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=600')">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M4 6v14h16V6H4zm2 2h12v10H6V8zm5 1.5v7l5-3.5-5-3.5z"/></svg>
+          Voir le trailer
+        </button>
+        <button class="btn btn-secondary" onclick="openBooking('Oppenheimer', '14:00', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=600')">
+          🎟️ Réserver
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Now Showing Grid -->
-  <section class="container" id="affiche">
-    <h2 class="section-title">À l'affiche cette semaine</h2>
-    <div class="movie-grid">
-      <!-- Card 1 -->
-      <div class="movie-card" onclick="window.location.href='film.html'">
-        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=800&auto=format&fit=crop" alt="Poster">
-        <div class="movie-card-overlay">
-          <h3>Dune: Part Two</h3>
-          <p style="color:var(--primary); margin-top:0.5rem">Aujourd'hui: 14h00, 20h30</p>
+  <main class="catalog">
+    <!-- Row: Tendance -->
+    <section class="movie-row">
+      <h2 class="row-title">Tendances actuelles</h2>
+      <div class="slider-container">
+        <div class="slider">
+          <!-- Card 1 -->
+          <article class="movie-card" data-title="Dune: Part Two" data-img="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=600">
+            <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=600" alt="Dune" class="card-img" loading="lazy">
+            <div class="card-overlay">
+              <h3 class="card-title">Dune: Part Two</h3>
+              <div class="card-meta"><span>Sci-Fi</span> • <span>2h 46m</span></div>
+              <div class="card-actions">
+                <button class="btn-icon play-btn" title="Voir infos">▶</button>
+                <button class="btn-icon add-btn" title="Réserver" onclick="openBooking('Dune: Part Two', '16:30', 'https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=600')">🎟️</button>
+              </div>
+            </div>
+          </article>
+          <!-- Card 2 -->
+          <article class="movie-card" data-title="Pauvres Créatures" data-img="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600">
+            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600" alt="Pauvres Creatures" class="card-img" loading="lazy">
+            <div class="card-overlay">
+              <h3 class="card-title">Pauvres Créatures</h3>
+              <div class="card-meta"><span>Drame</span> • <span>2h 21m</span></div>
+              <div class="card-actions">
+                <button class="btn-icon play-btn">▶</button>
+                <button class="btn-icon add-btn" onclick="openBooking('Pauvres Créatures', '18:15', 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600')">🎟️</button>
+              </div>
+            </div>
+          </article>
+          <!-- Add more cards to test horizontal scrolling -->
+          <article class="movie-card"><img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=600" class="card-img"><div class="card-overlay"><h3 class="card-title">Past Lives</h3><div class="card-actions"><button class="btn-icon add-btn" onclick="openBooking('Past Lives', '20:00', 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=600')">🎟️</button></div></div></article>
+          <article class="movie-card"><img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=600" class="card-img"><div class="card-overlay"><h3 class="card-title">Le Garçon</h3><div class="card-actions"><button class="btn-icon add-btn" onclick="openBooking('Le Garçon', '14:30', 'https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=600')">🎟️</button></div></div></article>
+          <article class="movie-card"><img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=600" class="card-img"><div class="card-overlay"><h3 class="card-title">Anatomie</h3><div class="card-actions"><button class="btn-icon add-btn" onclick="openBooking('Anatomie', '21:00', 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=600')">🎟️</button></div></div></article>
         </div>
       </div>
-      <!-- Card 2 -->
-      <div class="movie-card" onclick="window.location.href='film.html'">
-        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800&auto=format&fit=crop" alt="Poster">
-        <div class="movie-card-overlay">
-          <h3>Pauvres Créatures</h3>
-          <p style="color:var(--primary); margin-top:0.5rem">Aujourd'hui: 18h15, 21h00</p>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="movie-card" onclick="window.location.href='film.html'">
-        <img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=800&auto=format&fit=crop" alt="Poster">
-        <div class="movie-card-overlay">
-          <h3>Le Garçon et le Héron</h3>
-          <p style="color:var(--primary); margin-top:0.5rem">Aujourd'hui: 16h00</p>
-        </div>
-      </div>
-      <!-- Card 4 -->
-      <div class="movie-card" onclick="window.location.href='film.html'">
-        <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=800&auto=format&fit=crop" alt="Poster">
-        <div class="movie-card-overlay">
-          <h3>Past Lives</h3>
-          <p style="color:var(--primary); margin-top:0.5rem">Aujourd'hui: 19h30</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Reusable Footer -->
-  <footer>
-    <div class="footer-grid">
-      <div>
-        <h3 class="logo">LES <span>STUDIOS</span></h3>
-        <p style="color: var(--text-muted); margin-top: 1rem;">Votre cinéma d'art et d'essai indépendant. Une expérience cinématographique unique.</p>
-      </div>
-      <div>
-        <h3>Navigation</h3>
-        <ul style="list-style: none; color: var(--text-muted); margin-top: 1rem; line-height: 2;">
-          <li><a href="films.html">Tous les films</a></li>
-          <li><a href="seances.html">Horaires</a></li>
-          <li><a href="tarifs.html">Tarifs & Abonnements</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <p style="color: var(--text-muted); margin-top: 1rem;">2 Rue des Ursulines<br>29200 Brest<br>02 98 46 25 58</p>
+  <!-- =========================================
+       MODALE DE RÉSERVATION & SÉLECTION DE SIÈGES
+       ========================================= -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeBooking()">✕</button>
+      
+      <div class="modal-grid">
+        <!-- Colonne Info -->
+        <div class="modal-info">
+          <img src="" id="modalImg" class="modal-poster" alt="Affiche">
+          <h2 id="modalTitle" class="modal-movie-title">Titre du film</h2>
+          
+          <div class="session-times">
+            <h4>Horaires disponibles</h4>
+            <div class="time-options">
+              <button class="time-btn active">14:00</button>
+              <button class="time-btn">17:15</button>
+              <button class="time-btn">20:30</button>
+              <button class="time-btn">22:45</button>
+            </div>
+          </div>
+
+          <div class="booking-summary">
+            <div class="summary-row"><span>Places sélectionnées :</span> <span id="seatCount" class="highlight">0</span></div>
+            <div class="summary-row"><span>Sièges :</span> <span id="seatNumbers" class="highlight">-</span></div>
+            <div class="summary-row total"><span>Total :</span> <span id="totalPrice">0.00 €</span></div>
+          </div>
+          
+          <button class="btn btn-primary w-100 mt-auto" id="confirmBtn" disabled>Confirmer la réservation</button>
+        </div>
+
+        <!-- Colonne Sièges -->
+        <div class="modal-seats">
+          <h3 style="text-align:center; margin-bottom: 2rem;">Sélectionnez vos sièges</h3>
+          
+          <div class="screen-container">
+            <div class="screen"></div>
+            <p class="screen-text">Écran</p>
+          </div>
+
+          <div class="seat-map" id="seatMap">
+            <!-- Généré par JS -->
+          </div>
+
+          <div class="seat-legend">
+            <div class="legend-item"><div class="seat available legend"></div> Libre</div>
+            <div class="legend-item"><div class="seat selected legend"></div> Sélectionné</div>
+            <div class="legend-item"><div class="seat occupied legend"></div> Occupé</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div style="border-top: 1px solid #333; padding-top: 2rem; text-align: center; color: var(--text-muted);">
-      © 2024 Les Studios. Tous droits réservés.
-    </div>
-  </footer>
+  </div>
+
+  <!-- Toast Notification (Succès) -->
+  <div id="toast" class="toast">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="#4caf50" style="margin-right:10px;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+    <span>Réservation confirmée avec succès !</span>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
