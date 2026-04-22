@@ -7,114 +7,185 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <nav class="navbar">
-  <div class="logo">
-    <a href="index.html">Les Studios</a>
+  
+  <!-- =========================================
+       1. BARRE DE NAVIGATION
+       ========================================= -->
+  <nav>
+    <a href="index.html" class="logo">LES <span>STUDIOS</span></a>
+    <div class="menu-toggle">☰</div>
+    <div class="nav-links">
+      <a href="films.html">Films</a>
+      <a href="seances.html">Séances</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="infos.html">Infos Pratiques</a>
+      <a href="about.html">Le Cinéma</a>
+    </div>
+  </nav>
+
+  <!-- =========================================
+       2. BOUTON RETOUR PREMIUM (Sous la nav)
+       ========================================= -->
+  <div class="btn-back-container" style="padding-top: 6rem; padding-left: 5%; padding-bottom: 1rem; background: var(--bg-dark);">
+    <button onclick="history.back()" class="btn-back">
+      <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      Retour aux films
+    </button>
   </div>
 
-  <div class="menu">
-    <a href="films.html">Films</a>
-    <a href="seances.html">Séances</a>
-    <a href="tarifs.html">Tarifs</a>
-    <a href="infos.html">Infos</a>
-    <a href="about.html">Le cinéma</a>
-    <a href="booking.html">Mes billets 🎟️</a>
-  </div>
-</nav>
-  <!-- Insert Standard Navbar Here -->
-<button onclick="history.back()" class="back-btn">
-  ← Retour
-</button>
+  <!-- =========================================
+       3. HEADER DU FILM (Image de fond)
+       ========================================= -->
   <div class="film-header" style="background-image: url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=1920&auto=format&fit=crop');"></div>
   
+  <!-- =========================================
+       4. CONTENU PRINCIPAL DU FILM
+       ========================================= -->
   <div class="film-detail-container">
-    <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=600&auto=format&fit=crop" alt="Poster" class="film-poster-main">
     
-    <div style="padding-top: 2rem;">
-      <div class="hero-meta"><span>SCIENCE-FICTION</span> <span>•</span> <span>2H46</span> <span>•</span> <span>VOSTFR</span></div>
-      <h1 style="font-size: 3rem; margin-bottom: 1rem;">DUNE: PART TWO</h1>
-      <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 800px; margin-bottom: 2rem;">
+    <!-- Affiche gauche -->
+    <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=600&auto=format&fit=crop" alt="Affiche Dune" class="film-poster-main">
+    
+    <!-- Infos droites -->
+    <div style="padding-top: 1rem; width: 100%; max-width: 800px;">
+      
+      <div class="hero-meta">
+        <span>SCIENCE-FICTION</span> <span>•</span> <span>2H46</span> <span>•</span> <span>VOSTFR</span>
+      </div>
+      
+      <h1 style="font-size: 3.5rem; margin-bottom: 1rem; text-transform: uppercase;">DUNE: PART TWO</h1>
+      
+      <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2.5rem;">
         Paul Atréides s'unit à Chani et aux Fremen pour mener la révolte contre ceux qui ont anéanti sa famille. Hanté par de sombres prémonitions, il se trouve confronté au plus grand des dilemmes : choisir entre l'amour de sa vie et le destin de l'univers.
       </p>
-      <!-- Dans film.html, remplacer la div .film-detail-container par : -->
-<div class="film-detail-container">
-  
-  <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0..." alt="Poster" class="film-poster-main">
-  
-  <div style="padding-top: 2rem; width: 100%;">
-    
-    <!-- BOUTON RETOUR -->
-    <button onclick="history.back()" class="btn-back">← Retour</button>
-
-    <div class="hero-meta"><span>SCIENCE-FICTION</span> <span>•</span> <span>2H46</span></div>
-    <h1 style="font-size: 3rem; margin-bottom: 1rem;">DUNE: PART TWO</h1>
-    
-    <h3>Séances d'aujourd'hui</h3>
-    
-    <!-- Grille des heures -->
-    <div class="times-grid" style="margin-bottom: 1rem;">
-      <div class="time-pill">14:00 (VOSTFR)</div>
-      <div class="time-pill">17:15 (VF)</div>
-      <div class="time-pill">20:30 (VOSTFR)</div>
-    </div>
-
-    <!-- LE SYSTEME DE RESERVATION (Caché par défaut, s'ouvre sous l'heure choisie) -->
-    <div class="booking-panel">
-      <h4 style="color: var(--primary); margin-bottom: 1rem;">
-        Réservation pour la séance de <span class="selected-time-display">...</span>
-      </h4>
       
-      <div class="ticket-row">
-        <div>Plein Tarif <span style="color:var(--text-muted); font-size: 0.9rem;">(7.50€)</span></div>
-        <div class="ticket-counter">
-          <button class="counter-btn minus" data-price="7.50">-</button>
-          <span class="qty">0</span>
-          <button class="counter-btn plus" data-price="7.50">+</button>
-        </div>
-      </div>
+      <!-- SÉANCES ET RÉSERVATION -->
+      <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Séances d'aujourd'hui</h3>
       
-      <div class="ticket-row">
-        <div>Tarif Réduit <span style="color:var(--text-muted); font-size: 0.9rem;">(5.50€)</span></div>
-        <div class="ticket-counter">
-          <button class="counter-btn minus" data-price="5.50">-</button>
-          <span class="qty">0</span>
-          <button class="counter-btn plus" data-price="5.50">+</button>
-        </div>
-      </div>
-
-      <div class="booking-total">
-        <span>Total</span>
-        <span class="total-price">0.00€</span>
-      </div>
-      
-      <button class="btn btn-outline btn-pay" style="width: 100%; margin-top: 1.5rem;" disabled>
-        Accéder au paiement
-      </button>
-    </div>
-    
-  </div>
-
-      <h3>Séances d'aujourd'hui</h3>
-      <div class="times-grid" style="margin-bottom: 2rem;">
+      <!-- Grille des heures -->
+      <div class="times-grid" style="margin-bottom: 1.5rem;">
         <div class="time-pill">14:00 (VOSTFR)</div>
         <div class="time-pill">17:15 (VF)</div>
         <div class="time-pill">20:30 (VOSTFR)</div>
       </div>
 
-      <!-- Trailer Embed Placeholder -->
-      <div style="aspect-ratio: 16/9; background: #000; display:flex; align-items:center; justify-content:center; border-radius: 8px; border: 1px solid #333;">
-        <span style="color:var(--text-muted);">[ Lecteur Vidéo Bande-Annonce ]</span>
+      <!-- LE PANNEAU DE RÉSERVATION (Caché, s'ouvre au clic sur une heure) -->
+      <div class="booking-panel">
+        <h3 style="margin-bottom: 1.5rem; color: var(--primary);">
+          Séance sélectionnée : <span class="selected-time-display">...</span>
+        </h3>
+        
+        <!-- Billet Plein Tarif -->
+        <div class="ticket-card">
+          <div class="ticket-info">
+            <h4>Plein Tarif</h4>
+            <p>7.50€</p>
+          </div>
+          <div class="ticket-counter">
+            <button class="counter-btn minus">-</button>
+            <span class="qty">0</span>
+            <button class="counter-btn plus" data-price="7.50">+</button>
+          </div>
+        </div>
+        
+        <!-- Billet Tarif Réduit -->
+        <div class="ticket-card">
+          <div class="ticket-info">
+            <h4>Tarif Réduit</h4>
+            <p>5.50€ (Étudiants, -18 ans, Demandeurs d'emploi)</p>
+          </div>
+          <div class="ticket-counter">
+            <button class="counter-btn minus">-</button>
+            <span class="qty">0</span>
+            <button class="counter-btn plus" data-price="5.50">+</button>
+          </div>
+        </div>
+
+        <!-- Bouton Ajouter au panier -->
+        <button class="btn btn-outline btn-add-cart" style="width: 100%; margin-top: 1rem; padding: 1rem; font-size: 1.1rem; border-radius: 8px;" disabled>
+          Sélectionnez vos places
+        </button>
       </div>
+
+      <!-- Bande Annonce (Espace réservé) -->
+      <h3 style="margin-top: 3rem; margin-bottom: 1rem; font-size: 1.5rem;">Bande Annonce</h3>
+      <div style="aspect-ratio: 16/9; background: #111; display:flex; align-items:center; justify-content:center; border-radius: 12px; border: 1px solid #333; margin-bottom: 4rem;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--primary)"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+
     </div>
   </div>
 
-  <!-- Mobile Sticky Booking -->
-  <div class="mobile-sticky-cta">
-    <a href="#seances" class="btn btn-primary" style="width: 100%; display: block;">Réserver une séance</a>
+  <!-- =========================================
+       5. PIED DE PAGE (FOOTER)
+       ========================================= -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h3 class="logo">LES <span>STUDIOS</span></h3>
+        <p style="color: var(--text-muted); margin-top: 1rem;">Votre cinéma d'art et d'essai indépendant. Une expérience cinématographique unique.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul style="list-style: none; color: var(--text-muted); margin-top: 1rem; line-height: 2;">
+          <li><a href="films.html">Tous les films</a></li>
+          <li><a href="seances.html">Horaires</a></li>
+          <li><a href="tarifs.html">Tarifs & Abonnements</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p style="color: var(--text-muted); margin-top: 1rem;">2 Rue des Ursulines<br>29200 Brest<br>02 98 46 25 58</p>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #333; padding-top: 2rem; text-align: center; color: var(--text-muted);">
+      © 2024 Les Studios. Tous droits réservés.
+    </div>
+  </footer>
+
+  <!-- =========================================
+       6. SYSTÈME DE PANIER (Slide-out)
+       ========================================= -->
+  
+  <!-- Bouton Panier Flottant en bas à droite -->
+  <div class="floating-cart-btn" id="floatingCartBtn">
+    <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+      <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+    </svg>
+    <div class="badge" id="cartBadge">0</div>
   </div>
 
-  <!-- Insert Standard Footer Here -->
+  <!-- Interface du Panier qui glisse depuis la droite -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    
+    <div class="cart-header">
+      <h2>Votre Panier</h2>
+      <button class="close-cart" id="closeCart">&times;</button>
+    </div>
+    
+    <div class="cart-body" id="cartBody">
+      <!-- Les articles s'ajouteront ici via Javascript -->
+      <p style="color:var(--text-muted); text-align:center; margin-top:2rem;">Votre panier est vide.</p>
+    </div>
+    
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <span id="cartTotal">0.00€</span>
+      </div>
+      <button class="btn btn-primary" style="width:100%; padding: 1.2rem; font-size:1.1rem; border-radius: 8px;">
+        Valider et Payer
+      </button>
+    </div>
+    
+  </div>
+
+  <!-- =========================================
+       7. SCRIPTS JS
+       ========================================= -->
   <script src="js/main.js"></script>
   <script src="js/booking.js"></script>
+
 </body>
 </html>
