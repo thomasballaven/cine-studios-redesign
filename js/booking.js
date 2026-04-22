@@ -1,87 +1,132 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Gérer les clics sur les heures (Sélection de séance)
+  let cart = [];
+
+  // --- 1. OUVERTURE DU PANNEAU SOUS L'HEURE ---
   const timePills = document.querySelectorAll('.time-pill');
-  
   timePills.forEach(pill => {
     pill.addEventListener('click', function() {
-      // Retirer la classe active de tous les boutons de cette ligne
       const container = this.closest('.times-grid');
-      container.querySelectorAll('.time-pill').forEach(p => p.classList.remove('active'));
+      container.querySelectorAll('.time-pill').forEach(p => {
+        p.style.borderColor = "transparent";
+        p.style.backgroundColor = "var(--bg-surface-light)";
+      });
       
-      // Ajouter la classe active au bouton cliqué
-      this.classList.add('active');
       this.style.borderColor = "var(--primary)";
       this.style.backgroundColor = "var(--bg-dark)";
 
-      // Trouver le panneau de réservation associé
-      const scheduleInfo = this.closest('.schedule-info') || this.closest('.film-detail-container > div');
-      const bookingPanel = scheduleInfo.querySelector('.booking-panel');
-      const timeDisplay = bookingPanel.querySelector('.selected-time-display');
+      const infoSection = this.closest('.schedule-info, .film-detail-container > div');
+      const panel = infoSection.querySelector('.booking-panel');
+      const timeDisplay = panel.querySelector('.selected-time-display');
       
-      // Mettre à jour l'heure affichée et ouvrir le panneau
       timeDisplay.textContent = this.textContent;
-      bookingPanel.classList.add('active');
+      panel.dataset.movie = infoSection.querySelector('h1, h3').textContent;
+      panel.classList.add('active');
     });
   });
 
-  // 2. Gérer le système de billets (+ et -)
-  const counterBtns = document.querySelectorAll('.counter-btn');
-  
-  counterBtns.forEach(btn => {
+  // --- 2. BOUTONS + / - DES BILLETS ---
+  document.querySelectorAll('.counter-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       const isPlus = this.classList.contains('plus');
-      const row = this.closest('.ticket-row');
+      const row = this.closest('.ticket-card');
       const qtySpan = row.querySelector('.qty');
-      const price = parseFloat(this.getAttribute('data-price'));
-      
       let currentQty = parseInt(qtySpan.textContent);
       
-      if (isPlus) {
-        currentQty += 1;
-      } else if (!isPlus && currentQty > 0) {
-        currentQty -= 1;
-      }
+      if (isPlus) currentQty++;
+      else if (!isPlus && currentQty > 0) currentQty--;
       
       qtySpan.textContent = currentQty;
-      
-      // Mettre à jour le prix total du panneau actuel
-      updateTotal(this.closest('.booking-panel'));
+      updatePanelTotal(this.closest('.booking-panel'));
     });
   });
 
-  function updateTotal(panel) {
+  function updatePanelTotal(panel) {
     let total = 0;
-    const rows = panel.querySelectorAll('.ticket-row');
-    
-    rows.forEach(row => {
-      const qty = parseInt(row.querySelector('.qty').textContent);
-      const price = parseFloat(row.querySelector('.plus').getAttribute('data-price'));
+    panel.querySelectorAll('.ticket-card').forEach(card => {
+      const qty = parseInt(card.querySelector('.qty').textContent);
+      const price = parseFloat(card.querySelector('.plus').dataset.price);
       total += qty * price;
     });
     
-    panel.querySelector('.total-price').textContent = total.toFixed(2) + '€';
-    
-    // Griser le bouton payer si total = 0
-    const payBtn = panel.querySelector('.btn-pay');
-    if(total > 0) {
-      payBtn.classList.remove('btn-outline');
-      payBtn.classList.add('btn-primary');
-      payBtn.disabled = false;
+    const addBtn = panel.querySelector('.btn-add-cart');
+    addBtn.textContent = total > 0 ? `Ajouter au panier - ${total.toFixed(2)}€` : 'Sélectionnez vos places';
+    addBtn.className = total > 0 ? 'btn btn-primary btn-add-cart' : 'btn btn-outline btn-add-cart';
+    addBtn.disabled = total === 0;
+  }
+
+  // --- 3. AJOUTER AU PANIER ---
+  document.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', function() {
+      if(this.disabled) return;
+      
+      const panel = this.closest('.booking-panel');
+      const movie = panel.dataset.movie;
+      const time = panel.querySelector('.selected-time-display').textContent;
+      
+      panel.querySelectorAll('.ticket-card').forEach(card => {
+        const qty = parseInt(card.querySelector('.qty').textContent);
+        if(qty > 0) {
+          const type = card.querySelector('h4').textContent;
+          const price = parseFloat(card.querySelector('.plus').dataset.price);
+          cart.push({ movie, time, type, price, qty });
+          card.querySelector('.qty').textContent = '0'; // reset
+        }
+      });
+
+      updatePanelTotal(panel);
+      panel.classList.remove('active');
+      renderCart();
+      toggleCart(true);
+    });
+  });
+
+  // --- 4. GESTION DU PANIER (UI) ---
+  const cartSidebar = document.getElementById('cartSidebar');
+  const cartOverlay = document.getElementById('cartOverlay');
+
+  function toggleCart(show) {
+    if(show) {
+      cartSidebar.classList.add('active');
+      cartOverlay.classList.add('active');
     } else {
-      payBtn.classList.add('btn-outline');
-      payBtn.classList.remove('btn-primary');
-      payBtn.disabled = true;
+      cartSidebar.classList.remove('active');
+      cartOverlay.classList.remove('active');
     }
   }
 
-  // 3. Bouton Payer
-  document.querySelectorAll('.btn-pay').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const total = this.closest('.booking-panel').querySelector('.total-price').textContent;
-      if(total === "0.00€") return;
-      
-      alert(`Redirection vers la page de paiement sécurisée...\nMontant à régler : ${total}`);
-      // Ici, vous pourriez rediriger vers une page checkout.html
-    });
-  });
+  document.getElementById('floatingCartBtn')?.addEventListener('click', () => toggleCart(true));
+  document.getElementById('closeCart')?.addEventListener('click', () => toggleCart(false));
+  cartOverlay?.addEventListener('click', () => toggleCart(false));
+
+  function renderCart() {
+    const cartBody = document.getElementById('cartBody');
+    const cartTotalEl = document.getElementById('cartTotal');
+    const badge = document.getElementById('cartBadge');
+    
+    cartBody.innerHTML = '';
+    let total = 0;
+    let count = 0;
+
+    if(cart.length === 0) {
+      cartBody.innerHTML = '<p style="color:var(--text-muted); text-align:center; margin-top:2rem;">Votre panier est vide.</p>';
+    } else {
+      cart.forEach((item, index) => {
+        total += item.price * item.qty;
+        count += item.qty;
+        cartBody.innerHTML += `
+          <div class="cart-item">
+            <h4 style="margin-bottom:0.5rem">${item.movie}</h4>
+            <p style="color:var(--primary); font-size:0.9rem;">Séance : ${item.time}</p>
+            <div style="display:flex; justify-content:space-between; margin-top:1rem; color:var(--text-muted);">
+              <span>${item.qty}x ${item.type}</span>
+              <span style="color:white; font-weight:bold;">${(item.price * item.qty).toFixed(2)}€</span>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    cartTotalEl.textContent = total.toFixed(2) + '€';
+    if(badge) badge.textContent = count;
+  }
 });
